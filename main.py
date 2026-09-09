@@ -9,6 +9,7 @@ class Ticket:
     ticket_name: str
     ticket_description: str
     ticket_state: str
+    ticket_type: str
     active: bool = False
 
 def stateMachine(ticket: Ticket, new_state: str):
@@ -34,11 +35,15 @@ def createTicket():
     _id = idGenerator(0, 1999)
     _name = t_getStr("Enter the name of the ticket: ")
     _desc = t_getStr("Enter the desc of the ticket: ")
+    _type = t_getStr("Enter the type of the ticket: ")
     _state = "Unassigned"
-
-    _ticket = Ticket(_id, _name, _desc, _state, False)
+    
+    _ticket = Ticket(_id, _name, _desc, _state, _type, False)
     dm.saveTicket(_ticket)
 
 def idGenerator(initial, final):
     _id = random.randrange(initial, final)
     return _id
+
+def deleteTicket():
+    inp = t_getStr("Enter the ticket ID to delete: ")

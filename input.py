@@ -6,7 +6,7 @@ def getStr():
     _inp = input(">> ")
     return _inp
 
-def t_getStr(t):
+def t_getStr(t: str):
     _inp: str
     _inp = input(t + " >> ")
     return _inp
