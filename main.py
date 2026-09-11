@@ -2,34 +2,35 @@ from dataclasses import *
 import random
 import databaseManager as dm
 from input import *
+import user as u
 
 @dataclass
 class Ticket:
-    ticket_id: int
-    ticket_name: str
-    ticket_description: str
-    ticket_state: str
-    ticket_type: str
-    active: bool = False
+    ID: int
+    NAME: str
+    DESC: str
+    STATE: str
+    TYPE: str
+    ACTIVE: bool
 
 def stateMachine(ticket: Ticket, new_state: str):
     state = ["Active", "In Progress", "Resolved", "Closed", "Unassigned"]
 
     # If asked to change the state of the ticket
-    if ticket.active == True:
+    if ticket.ACTIVE == True:
         if new_state in state:
-            ticket.ticket_state = new_state
-            print(f"Ticket {ticket.ticket_id} state changed to {new_state}.")
+            ticket.STATE = new_state
+            print(f"Ticket {ticket.ID} state changed to {new_state}.")
         else: 
-            print(f"The ticket is not valid or active. Current ticket active status: {ticket.active}.")
+            print(f"The ticket is not valid or active. Current ticket active status: {ticket.ACTIVE}.")
 
     def askState():
         _state = input("Enter the state you want: ")
         return _state
 
 def activateTicket(ticket: Ticket):
-    ticket.active = True
-    print(f"Ticket {ticket.ticket_id} is now active.")
+    ticket.ACTIVE = True
+    print(f"Ticket {ticket.ID} is now active.")
 
 def createTicket():
     _id = idGenerator(0, 1999)
@@ -47,3 +48,14 @@ def idGenerator(initial, final):
 
 def deleteTicket():
     inp = t_getStr("Enter the ticket ID to delete: ")
+
+def createUser():
+    uid = dm.generateID("user")
+    name = t_getStr("Enter your username: ")
+    email = t_getStr("Enter your email: ")
+    passHash = t_getStr("Pass: ")
+    _rank = t_getStr("Rank: ")
+
+    _u = u.user(uid, name, email, passHash, _rank, True)
+    dm.saveUser(_u)
+    dm.saveID(uid, "user")

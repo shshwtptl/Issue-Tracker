@@ -1,0 +1,18 @@
+{
+    "RANK": [
+        {
+            "user_id": 1,
+            "user_name": "name",
+            "user_email": "email",
+            "user_pass": "pass",
+            "user_active": true
+        },
+        {
+            "user_id": 2,
+            "user_name": "name",
+            "user_email": "email",
+            "user_pass": "pass",
+            "user_active": true
+        }
+    ]
+}

@@ -35,9 +35,10 @@ def main():
 
     if inp == 'help':
         help()
-    if inp == "create":
+    elif inp == "create":
         create()
-
+    elif inp == "user":
+        m.createUser()
 
 
 main()
