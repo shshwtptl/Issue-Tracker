@@ -1,8 +1,9 @@
 from dataclasses import *
 import random
-import databaseManager as dm
-from input import *
-import user as u
+import logic.databaseManager as dm
+from helper.input import *
+import logic.user as u
+from helper.basics import *
 
 @dataclass
 class Ticket:
@@ -33,6 +34,8 @@ def activateTicket(ticket: Ticket):
     print(f"Ticket {ticket.ID} is now active.")
 
 def createTicket():
+    clear()
+
     _id = idGenerator(0, 1999)
     _name = t_getStr("Enter the name of the ticket: ")
     _desc = t_getStr("Enter the desc of the ticket: ")
@@ -49,13 +52,19 @@ def idGenerator(initial, final):
 def deleteTicket():
     inp = t_getStr("Enter the ticket ID to delete: ")
 
+
 def createUser():
+    clear()
+
     uid = dm.generateID("user")
-    name = t_getStr("Enter your username: ")
+    name = t_getStr("Enter your username: ").lower()
     email = t_getStr("Enter your email: ")
     passHash = t_getStr("Pass: ")
     _rank = t_getStr("Rank: ")
 
     _u = u.user(uid, name, email, passHash, _rank, True)
+
     dm.saveUser(_u)
     dm.saveID(uid, "user")
+
+

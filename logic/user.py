@@ -1,7 +1,7 @@
 from dataclasses import *
 import random
-import databaseManager as dm
-from input import *
+import logic.databaseManager as dm
+from helper.input import *
 
 rank = ["CTO", "SE", "JE"]
 

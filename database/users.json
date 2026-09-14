@@ -1,0 +1,34 @@
+{
+    "RANK": [
+        {
+            "user_id": 1,
+            "user_name": "name",
+            "user_email": "email",
+            "user_pass": "pass",
+            "user_active": true
+        },
+        {
+            "user_id": 2,
+            "user_name": "name",
+            "user_email": "email",
+            "user_pass": "pass",
+            "user_active": true
+        }
+    ],
+    "CTO": [
+        {
+            "user_id": 3,
+            "user_name": "shashwat",
+            "user_email": "shashwat@gmail.com",
+            "user_pass": "t7arr",
+            "user_active": true
+        },
+        {
+            "user_id": 4,
+            "user_name": "Shashwat",
+            "user_email": "patel@gmail.com",
+            "user_pass": "t7arr",
+            "user_active": true
+        }
+    ]
+}

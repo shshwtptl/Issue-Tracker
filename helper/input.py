@@ -10,3 +10,9 @@ def t_getStr(t: str):
     _inp: str
     _inp = input(t + " >> ")
     return _inp
+
+def t_getInt(t: str):
+    _inp: int
+    _inp = int(input(t + ">> "))
+
+    return _inp

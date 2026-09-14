@@ -1,13 +1,14 @@
 import json
 from dataclasses import *
-import main as m
-import user as u
+import logic.main as m
+import logic.user as u
 
-id_u_filename = "userID.json"
-id_t_filename = "ticketID.json"
 
-db_u_filename = "users.json"
-db_t_filename = "ticekts.json"
+id_u_filename = "database/userID.json"
+id_t_filename = "database/ticketID.json"
+
+db_u_filename = "database/users.json"
+db_t_filename = "database/ticekts.json"
 
 def saveTicket(ticket: m.Ticket):
     try:
@@ -109,3 +110,35 @@ def generateID(type: str):
         return 1
 
     return max(data) + 1
+
+def loginID(id, password, rank):
+    try:
+        with open(db_u_filename, "r") as file:
+            data = json.load(file)
+    except (FileNotFoundError, json.JSONDecodeError):
+        data = []
+
+    if rank.upper() not in data:
+        return False
+
+    for user in data[rank.upper()]:
+        if user["user_id"] == id:
+            if user["user_pass"] == password:
+                return True
+            else:
+                return False
+        
+    return False
+
+def fetchUserID(username, email):
+    try:
+        with open(db_u_filename, "r") as file:
+            data = json.load(file)
+    except(FileNotFoundError, json.JSONDecodeError):
+        data = []
+
+    for rank in data:
+        for user in data[rank]:
+            if user["user_name"] == username:
+                if user["user_email"] == email:
+                    print(user["user_id"])

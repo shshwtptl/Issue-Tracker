@@ -1,0 +1,14 @@
+[Frond end]
+- Basic Login Page
+- Tickets Panel
+- Ticket Creation Page
+- Rank System Page
+- Users Page
+
+[Back end]
+- Login/Register System
+- Ticket Removal, Ticket Modification, Ticket Sorting
+- Rank System
+- Password Encryption/Decryption
+- Change the database to SQL
+- Convert everything to an API

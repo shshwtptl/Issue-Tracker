@@ -1,6 +1,8 @@
 from dataclasses import *
-from input import *
-import main as m
+from helper.input import *
+from helper.basics import *
+from logic.databaseManager import *
+from logic.main import *
 
 @dataclass
 class command:
@@ -12,21 +14,49 @@ commands = [
     command("Create", ">> Initializes the create function for the Issue."),
 ]
 
-def checkInput():
-    _inp = input()
-    return _inp
-
 def help():
+    clear()
     print("This is help page.")
 
     for i in commands:
         print(i.name + " " + i.desc)
 
 def create():
-    m.createTicket()
+    clear()
 
-def main():
+    createTicket()
+
+def login():
+    clear()
+
+    id = t_getInt("id: ")
+    password = t_getStr("password: ")
+    rank = t_getStr("rank: ")
+
+    _login = loginID(id, password, rank)
+
+    if _login == True:
+        clear()
+        print("Logged in Succesfully.")
+        main()
+    else:
+        print("id or password is wrong.")
+
+def start():
+    clear()
+
+    print("register or login?")
+    _inp = getStr()
+
+    if _inp == "register":
+        createUser()
+        start()
+    elif _inp == "login":
+        login()
     
+def main():
+    clear()
+        
     print("Issue Tracking System")
     print("This is a basic recreation of a Issue-Ticket system, designed for IT workspaces.")
     print("Type 'help' for info on Use.")   
@@ -37,8 +67,9 @@ def main():
         help()
     elif inp == "create":
         create()
-    elif inp == "user":
-        m.createUser()
+    elif inp == "fetch":
+        username = t_getStr("username")
+        email = t_getStr("email")
+        fetchUserID(username, email)
 
-
-main()
+start()
